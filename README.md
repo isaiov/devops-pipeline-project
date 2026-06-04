@@ -28,6 +28,22 @@ curl http://localhost:8080/health
 docker compose down
 ```
 
+### Full Stack with Monitoring
+
+```bash
+# Start everything: site + Prometheus + Grafana
+docker compose -f docker-compose.monitoring.yml up -d
+
+# Endpoints:
+#   Site       → http://localhost:8080
+#   Prometheus → http://localhost:9090
+#   Grafana    → http://localhost:3000 (admin / devops123)
+#   Health     → http://localhost:8080/health
+
+# Stop
+docker compose -f docker-compose.monitoring.yml down
+```
+
 ## Project Structure
 
 ```
@@ -51,6 +67,6 @@ docker compose down
 | 1. App + Docker | Static site with Nginx container | ✅ Done |
 | 2. CI/CD | GitHub Actions pipeline | ✅ Done |
 | 3. IaC | Terraform for Azure | 🔜 Planned |
-| 4. Deploy | Automated deployment | 🔜 Planned |
-| 5. Monitoring | Prometheus + Grafana | 🔜 Planned |
+| 4. Deploy | Automated deployment | ✅ Done |
+| 5. Monitoring | Prometheus + Grafana | ✅ Done |
 | 6. Docs | Architecture diagrams | 🔜 Planned |

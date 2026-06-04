@@ -1,0 +1,144 @@
+{
+  "dashboard": {
+    "id": null,
+    "uid": "nginx-overview",
+    "title": "DevOps Pipeline - Nginx Overview",
+    "tags": ["nginx", "devops-pipeline"],
+    "timezone": "browser",
+    "refresh": "10s",
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "panels": [
+      {
+        "id": 1,
+        "title": "Nginx Status",
+        "type": "stat",
+        "gridPos": { "h": 4, "w": 6, "x": 0, "y": 0 },
+        "targets": [
+          {
+            "expr": "nginx_up",
+            "legendFormat": "Status"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              { "options": { "0": { "text": "DOWN", "color": "red" }, "1": { "text": "UP", "color": "green" } }, "type": "value" }
+            ],
+            "thresholds": {
+              "steps": [
+                { "color": "red", "value": null },
+                { "color": "green", "value": 1 }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Active Connections",
+        "type": "gauge",
+        "gridPos": { "h": 4, "w": 6, "x": 6, "y": 0 },
+        "targets": [
+          {
+            "expr": "nginx_connections_active",
+            "legendFormat": "Active"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "max": 100,
+            "thresholds": {
+              "steps": [
+                { "color": "green", "value": null },
+                { "color": "yellow", "value": 50 },
+                { "color": "red", "value": 80 }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Total Requests",
+        "type": "stat",
+        "gridPos": { "h": 4, "w": 6, "x": 12, "y": 0 },
+        "targets": [
+          {
+            "expr": "nginx_http_requests_total",
+            "legendFormat": "Total"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Requests per Second",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 12, "x": 0, "y": 4 },
+        "targets": [
+          {
+            "expr": "rate(nginx_http_requests_total[1m])",
+            "legendFormat": "req/s"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Connections",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 12, "x": 12, "y": 4 },
+        "targets": [
+          {
+            "expr": "nginx_connections_active",
+            "legendFormat": "Active"
+          },
+          {
+            "expr": "nginx_connections_reading",
+            "legendFormat": "Reading"
+          },
+          {
+            "expr": "nginx_connections_writing",
+            "legendFormat": "Writing"
+          },
+          {
+            "expr": "nginx_connections_waiting",
+            "legendFormat": "Waiting"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "CPU Usage",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 12, "x": 0, "y": 12 },
+        "targets": [
+          {
+            "expr": "100 - (avg(rate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
+            "legendFormat": "CPU %"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": { "unit": "percent", "max": 100 }
+        }
+      },
+      {
+        "id": 7,
+        "title": "Memory Usage",
+        "type": "timeseries",
+        "gridPos": { "h": 8, "w": 12, "x": 12, "y": 12 },
+        "targets": [
+          {
+            "expr": "(1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100",
+            "legendFormat": "Memory %"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": { "unit": "percent", "max": 100 }
+        }
+      }
+    ]
+  },
+  "overwrite": true
+}
