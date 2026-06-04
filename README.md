@@ -44,19 +44,32 @@ docker compose -f docker-compose.monitoring.yml up -d
 docker compose -f docker-compose.monitoring.yml down
 ```
 
+## Documentation
+
+- [Architecture](docs/architecture.md) — diagrams: pipeline, monitoring, network
+- [Setup Guide](docs/setup-guide.md) — local dev, production deploy, monitoring
+
 ## Project Structure
 
 ```
-├── src/                  # Static website source
+├── src/                    # Static website source
 │   ├── index.html
 │   ├── css/style.css
 │   └── js/app.js
-├── docker/               # Nginx configuration
-├── .github/workflows/    # CI/CD pipelines
-├── terraform/            # Infrastructure as Code
-├── monitoring/           # Prometheus & Grafana configs
+├── docker/                 # Nginx configuration
+├── .github/workflows/      # CI/CD pipelines
+│   ├── ci.yml              #   Build & test on push/PR
+│   ├── deploy.yml          #   Auto-deploy to VM
+│   └── release.yml         #   Tagged release flow
+├── monitoring/             # Observability stack
+│   ├── prometheus/         #   Prometheus config + alerts
+│   └── grafana/            #   Datasources + dashboards
+├── scripts/                # Automation scripts
+├── docs/                   # Architecture & setup docs
 ├── Dockerfile
-├── docker-compose.yml
+├── docker-compose.yml          # Dev
+├── docker-compose.prod.yml     # Production
+├── docker-compose.monitoring.yml # Full stack + monitoring
 └── README.md
 ```
 
@@ -69,4 +82,4 @@ docker compose -f docker-compose.monitoring.yml down
 | 3. IaC | Terraform for Azure | 🔜 Planned |
 | 4. Deploy | Automated deployment | ✅ Done |
 | 5. Monitoring | Prometheus + Grafana | ✅ Done |
-| 6. Docs | Architecture diagrams | 🔜 Planned |
+| 6. Docs | Architecture diagrams | ✅ Done |
