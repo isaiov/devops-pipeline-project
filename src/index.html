@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Pipeline Demo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">DevOps Pipeline</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#pipeline">Pipeline</a></li>
+                <li><a href="#status">Status</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h1>DevOps Full Pipeline</h1>
+            <p>End-to-end CI/CD pipeline with Docker, Terraform, and monitoring</p>
+            <div class="version-badge">
+                <span id="version">v1.0.0</span>
+                <span id="env">Development</span>
+            </div>
+        </section>
+
+        <section id="pipeline" class="pipeline">
+            <h2>Pipeline Stages</h2>
+            <div class="stages">
+                <div class="stage active">
+                    <div class="stage-icon">1</div>
+                    <h3>Code</h3>
+                    <p>HTML/CSS/JS source code</p>
+                </div>
+                <div class="stage-arrow">&rarr;</div>
+                <div class="stage active">
+                    <div class="stage-icon">2</div>
+                    <h3>Build</h3>
+                    <p>Docker image with Nginx</p>
+                </div>
+                <div class="stage-arrow">&rarr;</div>
+                <div class="stage">
+                    <div class="stage-icon">3</div>
+                    <h3>Test</h3>
+                    <p>Lint &amp; validation</p>
+                </div>
+                <div class="stage-arrow">&rarr;</div>
+                <div class="stage">
+                    <div class="stage-icon">4</div>
+                    <h3>Deploy</h3>
+                    <p>Terraform &rarr; Azure</p>
+                </div>
+                <div class="stage-arrow">&rarr;</div>
+                <div class="stage">
+                    <div class="stage-icon">5</div>
+                    <h3>Monitor</h3>
+                    <p>Prometheus + Grafana</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="status" class="status">
+            <h2>System Status</h2>
+            <div class="status-grid">
+                <div class="status-card">
+                    <h3>Web Server</h3>
+                    <span class="status-indicator online"></span>
+                    <p>Nginx</p>
+                </div>
+                <div class="status-card">
+                    <h3>Container</h3>
+                    <span class="status-indicator online"></span>
+                    <p>Docker</p>
+                </div>
+                <div class="status-card">
+                    <h3>CI/CD</h3>
+                    <span class="status-indicator pending"></span>
+                    <p>GitHub Actions</p>
+                </div>
+                <div class="status-card">
+                    <h3>Monitoring</h3>
+                    <span class="status-indicator offline"></span>
+                    <p>Prometheus</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2>About This Project</h2>
+            <p>A complete DevOps pipeline demonstration featuring:</p>
+            <ul>
+                <li>Static website served by Nginx in Docker</li>
+                <li>CI/CD with GitHub Actions</li>
+                <li>Infrastructure as Code with Terraform (Azure)</li>
+                <li>Monitoring with Prometheus &amp; Grafana</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 DevOps Pipeline Project</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
